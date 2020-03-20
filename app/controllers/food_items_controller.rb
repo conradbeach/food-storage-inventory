@@ -1,5 +1,7 @@
 class FoodItemsController < ApplicationController
+  before_action :require_login
   before_action :set_food_item, only: [:show, :edit, :update, :destroy]
+  before_action :scope_to_current_user, only: [:show, :edit, :update, :destroy]
 
   # GET /food_items
   # GET /food_items.json
@@ -15,10 +17,12 @@ class FoodItemsController < ApplicationController
   # GET /food_items/new
   def new
     @food_item = FoodItem.new
+    @categories = current_user.categories
   end
 
   # GET /food_items/1/edit
   def edit
+    @categories = current_user.categories
   end
 
   # POST /food_items
@@ -65,6 +69,10 @@ class FoodItemsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_food_item
       @food_item = FoodItem.find(params[:id])
+    end
+
+    def scope_to_current_user
+      redirect_to sign_in_path unless @food_item.category.storage_type.user == current_user
     end
 
     # Only allow a list of trusted parameters through.
