@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :storage_type_id %>
-    <%= form.text_field :storage_type_id %>
+    <%= form.select :storage_type_id, options_from_collection_for_select(@storage_types, 'id', 'name') %>
   </div>
 
   <div class="field">
