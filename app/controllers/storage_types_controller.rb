@@ -1,10 +1,12 @@
 class StorageTypesController < ApplicationController
+  before_action :require_login
   before_action :set_storage_type, only: [:show, :edit, :update, :destroy]
+  before_action :scope_to_current_user, only: [:show, :edit, :update, :destroy]
 
   # GET /storage_types
   # GET /storage_types.json
   def index
-    @storage_types = StorageType.all
+    @storage_types = current_user.storage_types
   end
 
   # GET /storage_types/1
@@ -24,7 +26,7 @@ class StorageTypesController < ApplicationController
   # POST /storage_types
   # POST /storage_types.json
   def create
-    @storage_type = StorageType.new(storage_type_params)
+    @storage_type = StorageType.new(storage_type_params.merge(user: current_user))
 
     respond_to do |format|
       if @storage_type.save
@@ -67,8 +69,12 @@ class StorageTypesController < ApplicationController
       @storage_type = StorageType.find(params[:id])
     end
 
+    def scope_to_current_user
+      redirect_to sign_in_path unless @storage_type.user == current_user
+    end
+
     # Only allow a list of trusted parameters through.
     def storage_type_params
-      params.require(:storage_type).permit(:user_id, :name)
+      params.require(:storage_type).permit(:name)
     end
 end
