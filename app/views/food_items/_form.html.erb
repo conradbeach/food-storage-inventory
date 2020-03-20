@@ -36,6 +36,11 @@
     ) %>
   </div>
 
+  <div class="field">
+    <%= form.label :another_item, "Create Another Item?" %>
+    <%= form.check_box :another_item, checked: true %>
+  </div
+
   <div class="actions">
     <%= form.submit %>
   </div>

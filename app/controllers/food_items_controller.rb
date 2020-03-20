@@ -31,8 +31,16 @@ class FoodItemsController < ApplicationController
     @food_item = FoodItem.new(food_item_params)
 
     respond_to do |format|
+      notice = 'Food item was successfully created.'
+
       if @food_item.save
-        format.html { redirect_to @food_item, notice: 'Food item was successfully created.' }
+        format.html do
+          if params[:food_item][:another_item] == "1"
+            redirect_to new_food_item_path, notice: notice
+          else
+            redirect_to @food_item, notice: notice
+          end
+        end
         format.json { render :show, status: :created, location: @food_item }
       else
         format.html { render :new }
