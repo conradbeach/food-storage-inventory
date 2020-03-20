@@ -28,7 +28,12 @@
 
   <div class="field">
     <%= form.label :expiration_date %>
-    <%= form.date_select :expiration_date, start_year: Date.today.year, end_year: Date.today.year + 60 %>
+    <%= form.date_select(
+      :expiration_date,
+      start_year: Date.today.year,
+      end_year: Date.today.year + 60,
+      order: [:month, :year],
+    ) %>
   </div>
 
   <div class="actions">
