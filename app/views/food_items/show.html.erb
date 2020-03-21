@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Storage Type:</strong>
+  <%= @storage_type.name %>
+</p>
+
+<p>
   <strong>Category:</strong>
-  <%= @food_item.category.name %>
+  <%= @category.name %>
 </p>
 
 <p>
@@ -11,8 +16,8 @@
 </p>
 
 <p>
-  <strong>Weight:</strong>
-  <%= @food_item.weight %>
+  <strong>Units:</strong>
+  <%= @food_item.units %> <%= @food_item.category.unit_type %>
 </p>
 
 <p>
@@ -20,5 +25,5 @@
   <%= @food_item.expiration_date %>
 </p>
 
-<%= link_to 'Edit', edit_food_item_path(@food_item) %> |
-<%= link_to 'Back', food_items_path %>
+<%= link_to 'Edit', edit_storage_type_category_food_item_path(@storage_type, @category, @food_item) %> |
+<%= link_to 'Back', [@storage_type, @category] %>

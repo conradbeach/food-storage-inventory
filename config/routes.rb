@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :storage_types, except: :index do
     resources :categories do
-      resources :food_items
+      resources :food_items, except: :index
     end
   end
 
