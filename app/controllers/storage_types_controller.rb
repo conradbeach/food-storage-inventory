@@ -76,6 +76,6 @@ class StorageTypesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def storage_type_params
-      params.require(:storage_type).permit(:name)
+      params.require(:storage_type).permit(:name, :notes)
     end
 end

@@ -5,6 +5,11 @@
   <%= @storage_type.name %>
 </p>
 
+<p>
+  <strong>Notes:</strong>
+  <pre><%= @storage_type.notes %></pre>
+</p>
+
 <%= link_to 'Edit', edit_storage_type_path(@storage_type) %> |
 <%= link_to 'Back', dashboard_path(current_user) %>
 

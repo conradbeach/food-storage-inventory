@@ -20,6 +20,11 @@
   <%= @category.units_per_year_per_adult %>
 </p>
 
+<p>
+  <strong>Notes:</strong>
+  <pre><%= @category.notes %></pre>
+</p>
+
 <%= link_to 'Edit', edit_storage_type_category_path(@storage_type, @category) %> |
 <%= link_to 'Back', @storage_type %>
 

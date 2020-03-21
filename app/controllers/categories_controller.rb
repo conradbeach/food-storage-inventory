@@ -89,6 +89,7 @@ class CategoriesController < ApplicationController
         :name,
         :unit_type,
         :units_per_year_per_adult,
+        :notes,
       )
     end
 end
