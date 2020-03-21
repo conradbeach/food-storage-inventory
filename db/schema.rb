@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_20_215638) do
+ActiveRecord::Schema.define(version: 2020_03_21_130738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,16 +20,18 @@ ActiveRecord::Schema.define(version: 2020_03_20_215638) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "unit_type"
+    t.float "units_per_year_per_adult"
     t.index ["storage_type_id"], name: "index_categories_on_storage_type_id"
   end
 
   create_table "food_items", force: :cascade do |t|
     t.bigint "category_id", null: false
     t.string "name"
-    t.float "weight"
     t.date "expiration_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "units"
     t.index ["category_id"], name: "index_food_items_on_category_id"
   end
 
