@@ -1,2 +1,29 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>Your Storage</h1>
+
+<h2>Upcoming Expiration Dates</h2>
+<p>Coming soon...</p>
+
+<h2>Storage Types</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @storage_types.each do |storage_type| %>
+      <tr>
+        <td><%= storage_type.name %></td>
+        <td><%= link_to 'Show', storage_type %></td>
+        <td><%= link_to 'Edit', edit_storage_type_path(storage_type) %></td>
+        <td><%= link_to 'Destroy', storage_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Storage Type', new_storage_type_path %>
