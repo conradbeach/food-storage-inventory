@@ -10,5 +10,15 @@
   <%= @category.name %>
 </p>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<p>
+  <strong>Unit Type:</strong>
+  <%= @category.unit_type %>
+</p>
+
+<p>
+  <strong>Units Per Year Per Adult:</strong>
+  <%= @category.units_per_year_per_adult %>
+</p>
+
+<%= link_to 'Edit', edit_storage_type_category_path(@storage_type, @category) %> |
+<%= link_to 'Back', @storage_type %>

@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :require_login
+  before_action :set_storage_type
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   before_action :scope_to_current_user, only: [:show, :edit, :update, :destroy]
 
@@ -28,12 +29,12 @@ class CategoriesController < ApplicationController
   # POST /categories
   # POST /categories.json
   def create
-    @category = Category.new(category_params)
+    @category = Category.new(category_params.merge(storage_type: @storage_type))
     @storage_types = current_user.storage_types
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
+        format.html { redirect_to [@storage_type, @category], notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }
@@ -47,7 +48,7 @@ class CategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @category.update(category_params)
-        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
+        format.html { redirect_to [@storage_type, @category], notice: 'Category was successfully updated.' }
         format.json { render :show, status: :ok, location: @category }
       else
         format.html { render :edit }
@@ -72,12 +73,21 @@ class CategoriesController < ApplicationController
       @category = Category.find(params[:id])
     end
 
+    def set_storage_type
+      @storage_type = StorageType.find(params[:storage_type_id])
+    end
+
     def scope_to_current_user
       redirect_to sign_in_path unless @category.storage_type.user == current_user
     end
 
     # Only allow a list of trusted parameters through.
     def category_params
-      params.require(:category).permit(:storage_type_id, :name)
+      params.require(:category).permit(
+        :storage_type_id,
+        :name,
+        :unit_type,
+        :units_per_year_per_adult,
+      )
     end
 end

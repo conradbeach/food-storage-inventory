@@ -12,6 +12,7 @@ class StorageTypesController < ApplicationController
   # GET /storage_types/1
   # GET /storage_types/1.json
   def show
+    @categories = @storage_type.categories
   end
 
   # GET /storage_types/new
