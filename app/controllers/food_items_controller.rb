@@ -35,7 +35,7 @@ class FoodItemsController < ApplicationController
   # POST /food_items
   # POST /food_items.json
   def create
-    @food_item = FoodItem.new(food_item_params.merge(category: @category))
+    @food_item = FoodItem.new(food_item_params.merge(category: @category).merge(ounces_to_units_param))
 
     respond_to do |format|
       if @food_item.save
@@ -60,7 +60,7 @@ class FoodItemsController < ApplicationController
   # PATCH/PUT /food_items/1.json
   def update
     respond_to do |format|
-      if @food_item.update(food_item_params)
+      if @food_item.update(food_item_params.merge(ounces_to_units_param))
         format.html { redirect_to [@storage_type, @category, @food_item], notice: 'Food item was successfully updated.' }
         format.json { render :show, status: :ok, location: @food_item }
       else
@@ -101,5 +101,13 @@ class FoodItemsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def food_item_params
       params.require(:food_item).permit(:name, :units, :expiration_date)
+    end
+
+    def ounces_to_units_param
+      if @category.unit_type == "pounds" && params[:food_item][:weight_type] == "ounces"
+        { units: params[:food_item][:units].to_f / 16 }
+      else
+        {}
+      end
     end
 end
