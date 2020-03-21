@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  resources :food_items
-  resources :categories
-  resources :storage_types
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "pages#home"
 
   get "dashboard", to: "users#show"
+
+  resources :storage_types, except: :index do
+    resources :categories do
+      resources :food_items
+    end
+  end
 
   # Clearance
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
