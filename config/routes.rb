@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "dashboard", to: "users#show"
 
   resources :storage_types, except: :index do
-    resources :categories do
+    resources :categories, except: :index do
       resources :food_items, except: :index
     end
   end
