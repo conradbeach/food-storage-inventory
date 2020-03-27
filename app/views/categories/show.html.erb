@@ -21,6 +21,17 @@
 </p>
 
 <p>
+  <strong>Total Units:</strong>
+  <%= "#{@category.total_units} #{@category.unit_type}" %>
+</p>
+
+<p>
+  <strong>Years Provided For:</strong>
+  <%= @category.number_of_years_provided_for.round(2) %>
+</p>
+        
+
+<p>
   <strong>Notes:</strong>
   <pre><%= @category.notes %></pre>
 </p>

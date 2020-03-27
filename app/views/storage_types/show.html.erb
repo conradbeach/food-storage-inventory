@@ -19,6 +19,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Years Provided For</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -27,6 +28,7 @@
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.name %></td>
+        <td><%= category.number_of_years_provided_for.round(2) %></td>
         <td><%= link_to 'Show', storage_type_category_path(@storage_type, category) %></td>
         <td><%= link_to 'Edit', edit_storage_type_category_path(@storage_type, category) %></td>
         <td><%= link_to 'Destroy', storage_type_category_path(@storage_type, category), method: :delete, data: { confirm: 'Are you sure?' } %></td>
