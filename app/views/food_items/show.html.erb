@@ -25,5 +25,10 @@
   <%= @food_item.expiration_date %>
 </p>
 
+<p>
+  <strong>Date Added:</strong>
+  <%= @food_item.created_at.to_date %>
+</p>
+
 <%= link_to 'Edit', edit_storage_type_category_food_item_path(@storage_type, @category, @food_item) %> |
 <%= link_to 'Back', [@storage_type, @category] %>
