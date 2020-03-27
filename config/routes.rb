@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "pages#home"
 
   get "dashboard", to: "users#show"
+  resources :users, only: [:edit, :update]
 
   resources :storage_types, except: :index do
     resources :categories, except: :index do

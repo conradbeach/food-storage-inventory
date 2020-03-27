@@ -1,3 +1,12 @@
+<h1>Your Information</h1>
+
+<p>
+  <strong>Adults Providing For:</strong>
+  <%= current_user.adults_providing_for %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(current_user) %>
+
 <h1>Your Storage</h1>
 
 <h2>Upcoming Expiration Dates</h2>
