@@ -41,49 +41,51 @@
 
 <h2>Food Items</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Units</th>
-      <th>Expiration date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @food_items.each do |food_item| %>
+<div class="table-container">
+  <table class="table is-striped is-narrow is-hoverable is-fullwidth">
+    <thead>
       <tr>
-        <td><%= food_item.name %></td>
-        <td><%= food_item.units %> <%= food_item.category.unit_type %></td>
-        <td><%= food_item.expiration_date %></td>
-        <td>
-          <%= link_to(
-            raw('<i class="far fa-list-alt"></i>'),
-            [@storage_type, @category, food_item],
-            class: 'button is-small',
-          ) %>
-        </td>
-        <td>
-          <%= link_to(
-            raw('<i class="fas fa-pen"></i>'),
-            edit_storage_type_category_food_item_path(@storage_type, @category, food_item),
-            class: 'button is-small',
-          ) %>
-        </td>
-        <td>
-          <%= link_to(
-            raw('<i class="fas fa-trash-alt"></i>'),
-            [@storage_type, @category, food_item],
-            class: 'button is-small',
-            method: :delete,
-            data: { confirm: 'Are you sure you want to remove this food item?' } 
-          ) %>
-        </td>
+        <th>Name</th>
+        <th>Units</th>
+        <th>Expiration date</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @food_items.each do |food_item| %>
+        <tr>
+          <td><%= food_item.name %></td>
+          <td><%= food_item.units %> <%= food_item.category.unit_type %></td>
+          <td><%= food_item.expiration_date %></td>
+          <td>
+            <%= link_to(
+              raw('<i class="far fa-list-alt"></i>'),
+              [@storage_type, @category, food_item],
+              class: 'button is-small',
+            ) %>
+          </td>
+          <td>
+            <%= link_to(
+              raw('<i class="fas fa-pen"></i>'),
+              edit_storage_type_category_food_item_path(@storage_type, @category, food_item),
+              class: 'button is-small',
+            ) %>
+          </td>
+          <td>
+            <%= link_to(
+              raw('<i class="fas fa-trash-alt"></i>'),
+              [@storage_type, @category, food_item],
+              class: 'button is-small',
+              method: :delete,
+              data: { confirm: 'Are you sure you want to remove this food item?' } 
+            ) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
 
