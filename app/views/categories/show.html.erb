@@ -57,9 +57,29 @@
         <td><%= food_item.name %></td>
         <td><%= food_item.units %> <%= food_item.category.unit_type %></td>
         <td><%= food_item.expiration_date %></td>
-        <td><%= link_to 'Show', [@storage_type, @category, food_item] %></td>
-        <td><%= link_to 'Edit', edit_storage_type_category_food_item_path(@storage_type, @category, food_item) %></td>
-        <td><%= link_to 'Destroy', [@storage_type, @category, food_item], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to(
+            raw('<i class="far fa-list-alt"></i>'),
+            [@storage_type, @category, food_item],
+            class: 'button is-small',
+          ) %>
+        </td>
+        <td>
+          <%= link_to(
+            raw('<i class="fas fa-pen"></i>'),
+            edit_storage_type_category_food_item_path(@storage_type, @category, food_item),
+            class: 'button is-small',
+          ) %>
+        </td>
+        <td>
+          <%= link_to(
+            raw('<i class="fas fa-trash-alt"></i>'),
+            [@storage_type, @category, food_item],
+            class: 'button is-small',
+            method: :delete,
+            data: { confirm: 'Are you sure you want to remove this food item?' } 
+          ) %>
+        </td>
       </tr>
     <% end %>
   </tbody>
