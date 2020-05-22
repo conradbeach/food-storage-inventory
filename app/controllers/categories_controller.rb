@@ -13,7 +13,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-    @food_items = @category.food_items
+    @food_items = @category.food_items_by_name
   end
 
   # GET /categories/new
