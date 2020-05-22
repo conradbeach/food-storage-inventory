@@ -93,7 +93,7 @@ jobs:
 # We use workflows to orchestrate the jobs that we declared above.
 workflows:
   version: 2
-  run:     # The name of our workflow is "run"
+  build_and_check_rails_app:     # The name of our workflow is "build_and_check_rails_app"
     jobs:             # The list of jobs we run as part of this workflow.
       - build         # Run build first.
         - test:         # Then run test,
