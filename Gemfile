@@ -38,6 +38,10 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.9', '>= 3.9.1'
   gem 'bundler-audit'
   gem 'brakeman'
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
 end
 
 group :development do
