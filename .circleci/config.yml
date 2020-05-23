@@ -68,7 +68,7 @@ jobs:
       - ruby/install-deps 
       - run: 
           name: Run Rubocop
-          command: bundle exec rubocop
+          command: bundle exec rubocop --display-style-guide
 
   bundler-audit:
     docker:
