@@ -1,11 +1,13 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe "categories/show", type: :view do
-  before(:each) do
+  before do
     @category = assign(:category, Category.create!(
-      :storage_type => nil,
-      :name => "Name"
-    ))
+                                    storage_type: nil,
+                                    name: "Name",
+                                  ))
   end
 
   it "renders attributes in <p>" do

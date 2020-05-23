@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddNotesToStorageTypesAndCategories < ActiveRecord::Migration[6.0]
   def change
     add_column :storage_types, :notes, :text

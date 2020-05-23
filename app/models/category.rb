@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class Category < ApplicationRecord
   belongs_to :storage_type
   has_many :food_items
 
-  enum unit_type: [:pounds, :servings, :quantity]
+  enum unit_type: { pounds: 0, servings: 1, quantity: 2 }
 
   delegate :user, to: :storage_type
 
-  validates_presence_of :name, :unit_type, :units_per_year_per_adult
+  validates :name, :unit_type, :units_per_year_per_adult, presence: true
 
   def total_units
     food_items.sum(:units)

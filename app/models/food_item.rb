@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class FoodItem < ApplicationRecord
   belongs_to :category
 
-  validates_presence_of :name, :expiration_date, :units
+  validates :name, :expiration_date, :units, presence: true
 end

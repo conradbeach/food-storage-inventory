@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FoodItemsController < ApplicationController
   before_action :require_login
   before_action :set_storage_type
@@ -13,8 +15,7 @@ class FoodItemsController < ApplicationController
 
   # GET /food_items/1
   # GET /food_items/1.json
-  def show
-  end
+  def show; end
 
   # GET /food_items/new
   def new
@@ -61,7 +62,7 @@ class FoodItemsController < ApplicationController
   def update
     respond_to do |format|
       if @food_item.update(food_item_params.merge(ounces_to_units_param))
-        format.html { redirect_to [@storage_type, @category, @food_item], notice: 'Food item was successfully updated.' }
+        format.html { redirect_to [@storage_type, @category, @food_item], notice: "Food item was successfully updated." }
         format.json { render :show, status: :ok, location: @food_item }
       else
         format.html { render :edit }
@@ -75,39 +76,40 @@ class FoodItemsController < ApplicationController
   def destroy
     @food_item.destroy
     respond_to do |format|
-      format.html { redirect_to [@storage_type, @category], notice: 'Food item was successfully destroyed.' }
+      format.html { redirect_to [@storage_type, @category], notice: "Food item was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_storage_type
-      @storage_type = StorageType.find(params[:storage_type_id])
-    end
 
-    def set_category
-      @category = Category.find(params[:category_id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_storage_type
+    @storage_type = StorageType.find(params[:storage_type_id])
+  end
 
-    def set_food_item
-      @food_item = FoodItem.find(params[:id])
-    end
+  def set_category
+    @category = Category.find(params[:category_id])
+  end
 
-    def scope_to_current_user
-      redirect_to sign_in_path unless @food_item.category.storage_type.user == current_user
-    end
+  def set_food_item
+    @food_item = FoodItem.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def food_item_params
-      params.require(:food_item).permit(:name, :units, :expiration_date)
-    end
+  def scope_to_current_user
+    redirect_to sign_in_path unless @food_item.category.storage_type.user == current_user
+  end
 
-    def ounces_to_units_param
-      if @category.unit_type == "pounds" && params[:food_item][:weight_type] == "ounces"
-        { units: params[:food_item][:units].to_f / 16 }
-      else
-        {}
-      end
+  # Only allow a list of trusted parameters through.
+  def food_item_params
+    params.require(:food_item).permit(:name, :units, :expiration_date)
+  end
+
+  def ounces_to_units_param
+    if @category.unit_type == "pounds" && params[:food_item][:weight_type] == "ounces"
+      { units: params[:food_item][:units].to_f / 16 }
+    else
+      {}
     end
+  end
 end
