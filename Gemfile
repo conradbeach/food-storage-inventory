@@ -36,6 +36,7 @@ group :development, :test do
   gem "cypress-rails"
   gem 'pry-byebug', '~> 3.8'
   gem 'rspec-rails', '~> 3.9', '>= 3.9.1'
+  gem 'bundler-audit'
 end
 
 group :development do
