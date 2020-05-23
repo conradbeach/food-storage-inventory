@@ -37,6 +37,7 @@ group :development, :test do
   gem 'pry-byebug', '~> 3.8'
   gem 'rspec-rails', '~> 3.9', '>= 3.9.1'
   gem 'bundler-audit'
+  gem 'brakeman'
 end
 
 group :development do
