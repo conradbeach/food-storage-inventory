@@ -25,7 +25,12 @@ Style/StringLiterals:
 
 Metrics/BlockLength:
   Description: 'This cop checks if the length of a block exceeds some maximum value. Comment lines can optionally be ignored. The maximum allowed length is configurable. The cop can be configured to ignore blocks passed to certain methods.'
-  Exclude: ['spec/**/*', 'config/**/*']
+  Exclude: ['spec/**/*', 'config/**/*', 'lib/tasks/**/*']
+  Enabled: true
+  
+Naming/FileName:
+  Description: This cop makes sure that Ruby source files have snake_case names. Ruby scripts (i.e. source files with a shebang in the first line) are ignored.
+  Exclude: ['lib/tasks/**/*']
   Enabled: true
 
 Layout/LineLength:
