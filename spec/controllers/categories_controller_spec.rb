@@ -103,14 +103,20 @@ RSpec.describe CategoriesController, type: :controller do
 
       it "updates the requested category" do
         category = Category.create! valid_attributes
-        put :update, params: { id: category.to_param, category: new_attributes }, session: valid_session
+        put :update, {
+          params: { id: category.to_param, category: new_attributes },
+          session: valid_session,
+        }
         category.reload
         skip("Add assertions for updated state")
       end
 
       it "redirects to the category" do
         category = Category.create! valid_attributes
-        put :update, params: { id: category.to_param, category: valid_attributes }, session: valid_session
+        put :update, {
+          params: { id: category.to_param, category: valid_attributes },
+          session: valid_session,
+        }
         expect(response).to redirect_to(category)
       end
     end
@@ -118,7 +124,10 @@ RSpec.describe CategoriesController, type: :controller do
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
         category = Category.create! valid_attributes
-        put :update, params: { id: category.to_param, category: invalid_attributes }, session: valid_session
+        put :update, {
+          params: { id: category.to_param, category: invalid_attributes },
+          session: valid_session,
+        }
         expect(response).to be_successful
       end
     end

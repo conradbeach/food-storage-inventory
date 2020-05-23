@@ -103,14 +103,20 @@ RSpec.describe FoodItemsController, type: :controller do
 
       it "updates the requested food_item" do
         food_item = FoodItem.create! valid_attributes
-        put :update, params: { id: food_item.to_param, food_item: new_attributes }, session: valid_session
+        put :update, {
+          params: { id: food_item.to_param, food_item: new_attributes },
+          session: valid_session,
+        }
         food_item.reload
         skip("Add assertions for updated state")
       end
 
       it "redirects to the food_item" do
         food_item = FoodItem.create! valid_attributes
-        put :update, params: { id: food_item.to_param, food_item: valid_attributes }, session: valid_session
+        put :update, {
+          params: { id: food_item.to_param, food_item: valid_attributes },
+          session: valid_session,
+        }
         expect(response).to redirect_to(food_item)
       end
     end
@@ -118,7 +124,10 @@ RSpec.describe FoodItemsController, type: :controller do
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
         food_item = FoodItem.create! valid_attributes
-        put :update, params: { id: food_item.to_param, food_item: invalid_attributes }, session: valid_session
+        put :update, {
+          params: { id: food_item.to_param, food_item: invalid_attributes },
+          session: valid_session,
+        }
         expect(response).to be_successful
       end
     end

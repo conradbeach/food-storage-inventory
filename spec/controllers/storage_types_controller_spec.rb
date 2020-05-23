@@ -103,14 +103,20 @@ RSpec.describe StorageTypesController, type: :controller do
 
       it "updates the requested storage_type" do
         storage_type = StorageType.create! valid_attributes
-        put :update, params: { id: storage_type.to_param, storage_type: new_attributes }, session: valid_session
+        put :update, {
+          params: { id: storage_type.to_param, storage_type: new_attributes },
+          session: valid_session,
+        }
         storage_type.reload
         skip("Add assertions for updated state")
       end
 
       it "redirects to the storage_type" do
         storage_type = StorageType.create! valid_attributes
-        put :update, params: { id: storage_type.to_param, storage_type: valid_attributes }, session: valid_session
+        put :update, {
+          params: { id: storage_type.to_param, storage_type: valid_attributes },
+          session: valid_session,
+        }
         expect(response).to redirect_to(storage_type)
       end
     end
@@ -118,7 +124,10 @@ RSpec.describe StorageTypesController, type: :controller do
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
         storage_type = StorageType.create! valid_attributes
-        put :update, params: { id: storage_type.to_param, storage_type: invalid_attributes }, session: valid_session
+        put :update, {
+          params: { id: storage_type.to_param, storage_type: invalid_attributes },
+          session: valid_session,
+        }
         expect(response).to be_successful
       end
     end

@@ -2,7 +2,7 @@
 
 class Category < ApplicationRecord
   belongs_to :storage_type
-  has_many :food_items
+  has_many :food_items, dependent: :destroy
 
   enum unit_type: { pounds: 0, servings: 1, quantity: 2 }
 
