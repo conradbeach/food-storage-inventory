@@ -12,7 +12,7 @@ AllCops:
 
 Metrics/MethodLength:
   CountComments: false
-  Max: 15
+  Max: 20
 
 Style/Documentation:
   Enabled: false
