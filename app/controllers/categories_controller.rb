@@ -31,13 +31,16 @@ class CategoriesController < ApplicationController
 
   # POST /categories
   # POST /categories.json
+  # rubocop:disable Metrics/AbcSize
   def create
     @category = Category.new(category_params.merge(storage_type: @storage_type))
     @storage_types = current_user.storage_types
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to [@storage_type, @category], notice: "Category was successfully created." }
+        format.html do
+          redirect_to [@storage_type, @category], notice: "Category was successfully created."
+        end
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }
@@ -45,13 +48,16 @@ class CategoriesController < ApplicationController
       end
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   # PATCH/PUT /categories/1
   # PATCH/PUT /categories/1.json
   def update
     respond_to do |format|
       if @category.update(category_params)
-        format.html { redirect_to [@storage_type, @category], notice: "Category was successfully updated." }
+        format.html do
+          redirect_to [@storage_type, @category], notice: "Category was successfully updated."
+        end
         format.json { render :show, status: :ok, location: @category }
       else
         format.html { render :edit }

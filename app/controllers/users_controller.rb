@@ -11,6 +11,7 @@ class UsersController < Clearance::UsersController
 
   # PATCH/PUT /user/1
   # PATCH/PUT /user/1.json
+  # rubocop:disable Metrics/AbcSize
   def update
     respond_to do |format|
       if current_user.update(user_params)
@@ -22,6 +23,7 @@ class UsersController < Clearance::UsersController
       end
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   private
 

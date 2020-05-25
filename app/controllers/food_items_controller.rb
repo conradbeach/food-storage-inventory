@@ -22,10 +22,14 @@ class FoodItemsController < ApplicationController
     @food_item = FoodItem.new
     @categories = current_user.categories
 
-    if params[:another_item]
-      last_item_attrs = current_user.food_items.last.attributes.slice("name", "units", "expiration_date")
-      @food_item.assign_attributes(last_item_attrs)
-    end
+    return unless params[:another_item]
+
+    last_item_attrs = current_user.food_items.last.attributes.slice(
+      "name",
+      "units",
+      "expiration_date",
+    )
+    @food_item.assign_attributes(last_item_attrs)
   end
 
   # GET /food_items/1/edit
@@ -35,8 +39,12 @@ class FoodItemsController < ApplicationController
 
   # POST /food_items
   # POST /food_items.json
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
   def create
-    @food_item = FoodItem.new(food_item_params.merge(category: @category).merge(ounces_to_units_param))
+    @food_item = FoodItem.new(
+      food_item_params.merge(category: @category).merge(ounces_to_units_param),
+    )
 
     respond_to do |format|
       if @food_item.save
@@ -44,7 +52,14 @@ class FoodItemsController < ApplicationController
 
         format.html do
           if params[:food_item][:another_item] == "1"
-            redirect_to new_storage_type_category_food_item_path(@storage_type, @category, another_item: true), notice: notice
+            redirect_to(
+              new_storage_type_category_food_item_path(
+                @storage_type,
+                @category,
+                another_item: true,
+              ),
+              notice: notice,
+            )
           else
             redirect_to [@storage_type, @category, @food_item], notice: notice
           end
@@ -56,13 +71,20 @@ class FoodItemsController < ApplicationController
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
 
   # PATCH/PUT /food_items/1
   # PATCH/PUT /food_items/1.json
   def update
     respond_to do |format|
       if @food_item.update(food_item_params.merge(ounces_to_units_param))
-        format.html { redirect_to [@storage_type, @category, @food_item], notice: "Food item was successfully updated." }
+        format.html do
+          redirect_to(
+            [@storage_type, @category, @food_item],
+            notice: "Food item was successfully updated.",
+          )
+        end
         format.json { render :show, status: :ok, location: @food_item }
       else
         format.html { render :edit }
@@ -76,7 +98,9 @@ class FoodItemsController < ApplicationController
   def destroy
     @food_item.destroy
     respond_to do |format|
-      format.html { redirect_to [@storage_type, @category], notice: "Food item was successfully destroyed." }
+      format.html do
+        redirect_to [@storage_type, @category], notice: "Food item was successfully destroyed."
+      end
       format.json { head :no_content }
     end
   end
