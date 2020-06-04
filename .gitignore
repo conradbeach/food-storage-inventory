@@ -38,3 +38,7 @@ yarn-debug.log*
 .yardoc/**/*
 
 spec/examples.txt
+
+# BackstopJS
+backstop_data/html_report/
+bitmaps_test/
