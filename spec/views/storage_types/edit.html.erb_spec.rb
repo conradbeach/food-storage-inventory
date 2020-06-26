@@ -13,7 +13,7 @@ RSpec.describe "storage_types/edit", type: :view do
     )
   end
 
-  it "renders the edit storage_type form" do
+  xit "renders the edit storage_type form" do
     render
 
     assert_select "form[action=?][method=?]", storage_type_path(storage_type), "post" do

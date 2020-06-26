@@ -14,7 +14,7 @@ RSpec.describe "food_items/edit", type: :view do
     )
   end
 
-  it "renders the edit food_item form" do
+  xit "renders the edit food_item form" do
     render
 
     assert_select "form[action=?][method=?]", food_item_path(food_item), "post" do
