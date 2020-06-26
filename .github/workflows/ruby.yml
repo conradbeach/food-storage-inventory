@@ -14,7 +14,8 @@ on:
     branches: [ master ]
 
 jobs:
-  test:
+  test_and_lint: # Split this out into multiple jobs maybe?
+    name: Run tests, linters, etc.
 
     runs-on: ubuntu-latest
 
