@@ -27,7 +27,7 @@ jobs:
     - name: Set up PostgreSQL
       uses: harmon758/postgresql-action@v1
       with:
-        postgresql version: '11'  # See https://hub.docker.com/_/postgres for available versions
+        postgresql version: '9'  # See https://hub.docker.com/_/postgres for available versions
     - name: Install dependencies
       run: bundle install
     - name: Run tests
