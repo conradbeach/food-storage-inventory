@@ -1,9 +1,16 @@
+# frozen_string_literal: true
+
 class UpdateUnitInfo < ActiveRecord::Migration[6.0]
   def change
-    add_column :categories, :unit_type, :integer
-    add_column :categories, :units_per_year_per_adult, :float
-    
+    change_table :categories, bulk: true do |t|
+      t.column :unit_type, :integer
+      t.column :units_per_year_per_adult, :float
+    end
+
+    change_table :food_items, bulk: true do |t|
+      t.column :units, :float
+    end
+
     remove_column :food_items, :weight, :float
-    add_column :food_items, :units, :float
   end
 end
