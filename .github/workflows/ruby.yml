@@ -47,3 +47,9 @@ jobs:
         PG_DATABASE: postgres
         PG_PASSWORD: postgres
         PG_PORT: ${{ job.services.postgres.ports['5432'] }}
+    - name: Run Rubocop
+      run: bundle exec rubocop --display-style-guide
+    - name: Run bundler-audit
+      run: bundle exec bundler-audit check --update
+    - name: Run Brakeman
+      run: bundle exec brakeman --no-pager
