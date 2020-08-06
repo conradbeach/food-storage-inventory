@@ -29,9 +29,15 @@
       <tr>
         <td><%= category.name %></td>
         <td><%= category.number_of_years_provided_for.round(2) %></td>
-        <td><%= link_to 'Show', storage_type_category_path(@storage_type, category) %></td>
-        <td><%= link_to 'Edit', edit_storage_type_category_path(@storage_type, category) %></td>
-        <td><%= link_to 'Destroy', storage_type_category_path(@storage_type, category), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= render "show_button", path: storage_type_category_path(@storage_type, category) %>
+        </td>
+        <td>
+          <%= render "edit_button", path: edit_storage_type_category_path(@storage_type, category) %>
+        </td>
+        <td>
+          <%= render "delete_button", path: storage_type_category_path(@storage_type, category) %>
+        </td>
       </tr>
     <% end %>
   </tbody>
