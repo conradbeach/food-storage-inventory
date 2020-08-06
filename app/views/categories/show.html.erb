@@ -55,12 +55,9 @@
     <tbody>
       <% @food_items.each do |food_item| %>
         <tr>
-          <td><%= food_item.name %></td>
+          <td><%= link_to food_item.name, [@storage_type, @category, food_item] %></td>
           <td><%= food_item.units %> <%= food_item.category.unit_type %></td>
           <td><%= food_item.expiration_date %></td>
-          <td>
-            <%= render "show_button", path: [@storage_type, @category, food_item] %>
-          </td>
           <td>
             <%= render "edit_button", path: edit_storage_type_category_food_item_path(@storage_type, @category, food_item) %>
           </td>

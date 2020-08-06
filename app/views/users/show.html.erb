@@ -25,10 +25,7 @@
     <tbody>
       <% @storage_types.each do |storage_type| %>
         <tr>
-          <td><%= storage_type.name %></td>
-          <td>
-            <%= render "show_button", path: storage_type %>
-          </td>
+          <td><%= link_to storage_type.name, storage_type %></td>
           <td>
             <%= render "edit_button", path: edit_storage_type_path(storage_type) %>
           </td>
