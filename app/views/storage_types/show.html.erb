@@ -15,33 +15,35 @@
 
 <h2>Categories</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Years Provided For</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @categories.each do |category| %>
+<div class="table-container">
+  <table class="table is-striped is-narrow is-hoverable is-fullwidth">
+    <thead>
       <tr>
-        <td><%= category.name %></td>
-        <td><%= category.number_of_years_provided_for.round(2) %></td>
-        <td>
-          <%= render "show_button", path: storage_type_category_path(@storage_type, category) %>
-        </td>
-        <td>
-          <%= render "edit_button", path: edit_storage_type_category_path(@storage_type, category) %>
-        </td>
-        <td>
-          <%= render "delete_button", path: storage_type_category_path(@storage_type, category) %>
-        </td>
+        <th>Name</th>
+        <th>Years Provided For</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %></td>
+          <td><%= category.number_of_years_provided_for.round(2) %></td>
+          <td>
+            <%= render "show_button", path: storage_type_category_path(@storage_type, category) %>
+          </td>
+          <td>
+            <%= render "edit_button", path: edit_storage_type_category_path(@storage_type, category) %>
+          </td>
+          <td>
+            <%= render "delete_button", path: storage_type_category_path(@storage_type, category) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
 

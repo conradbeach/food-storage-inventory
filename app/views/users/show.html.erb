@@ -13,31 +13,33 @@
 <p>Coming soon...</p>
 
 <h2>Storage Types</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @storage_types.each do |storage_type| %>
+<div class="table-container">
+  <table class="table is-striped is-narrow is-hoverable is-fullwidth">
+    <thead>
       <tr>
-        <td><%= storage_type.name %></td>
-        <td>
-          <%= render "show_button", path: storage_type %>
-        </td>
-        <td>
-          <%= render "edit_button", path: edit_storage_type_path(storage_type) %>
-        </td>
-        <td>
-          <%= render "delete_button", path: storage_type %>
-        </td>
+        <th>Name</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @storage_types.each do |storage_type| %>
+        <tr>
+          <td><%= storage_type.name %></td>
+          <td>
+            <%= render "show_button", path: storage_type %>
+          </td>
+          <td>
+            <%= render "edit_button", path: edit_storage_type_path(storage_type) %>
+          </td>
+          <td>
+            <%= render "delete_button", path: storage_type %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
 
