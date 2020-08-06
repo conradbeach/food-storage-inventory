@@ -25,9 +25,15 @@
     <% @storage_types.each do |storage_type| %>
       <tr>
         <td><%= storage_type.name %></td>
-        <td><%= link_to 'Show', storage_type %></td>
-        <td><%= link_to 'Edit', edit_storage_type_path(storage_type) %></td>
-        <td><%= link_to 'Destroy', storage_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= render "show_button", path: storage_type %>
+        </td>
+        <td>
+          <%= render "edit_button", path: edit_storage_type_path(storage_type) %>
+        </td>
+        <td>
+          <%= render "delete_button", path: storage_type %>
+        </td>
       </tr>
     <% end %>
   </tbody>
