@@ -48,6 +48,7 @@
         <th>Name</th>
         <th>Units</th>
         <th>Exp. Date</th>
+        <th>Date Added</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -58,6 +59,7 @@
           <td><%= link_to food_item.name, [@storage_type, @category, food_item] %></td>
           <td><%= food_item.units %> <%= food_item.category.unit_type %></td>
           <td><%= food_item.expiration_date %></td>
+          <td><%= food_item.created_at.to_date %></td>
           <td>
             <%= render "edit_button", path: edit_storage_type_category_food_item_path(@storage_type, @category, food_item) %>
           </td>

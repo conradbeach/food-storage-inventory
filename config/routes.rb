@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "pages#home"
@@ -16,9 +18,7 @@ Rails.application.routes.draw do
   resource :session, controller: "clearance/sessions", only: [:create]
 
   resources :users, controller: "clearance/users", only: [:create] do
-    resource :password,
-      controller: "clearance/passwords",
-      only: [:edit, :update]
+    resource :password, controller: "clearance/passwords", only: [:edit, :update]
   end
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"

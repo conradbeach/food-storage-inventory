@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class Category < ApplicationRecord
   belongs_to :storage_type
-  has_many :food_items
+  has_many :food_items, dependent: :destroy
 
-  enum unit_type: [:pounds, :servings, :quantity]
+  enum unit_type: { pounds: 0, servings: 1, quantity: 2 }
 
   delegate :user, to: :storage_type
 
-  validates_presence_of :name, :unit_type, :units_per_year_per_adult
+  validates :name, :unit_type, :units_per_year_per_adult, presence: true
 
   def total_units
     food_items.sum(:units)
@@ -16,5 +18,9 @@ class Category < ApplicationRecord
     return 0 if user.adults_providing_for.blank? || user.adults_providing_for.zero?
 
     total_units / units_per_year_per_adult / user.adults_providing_for
+  end
+
+  def food_items_by_name
+    food_items.order(:name)
   end
 end

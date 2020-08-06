@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
   before_action :require_login
   before_action :set_storage_type
@@ -13,7 +15,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-    @food_items = @category.food_items
+    @food_items = @category.food_items_by_name
   end
 
   # GET /categories/new
@@ -29,13 +31,16 @@ class CategoriesController < ApplicationController
 
   # POST /categories
   # POST /categories.json
+  # rubocop:disable Metrics/AbcSize
   def create
     @category = Category.new(category_params.merge(storage_type: @storage_type))
     @storage_types = current_user.storage_types
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to [@storage_type, @category], notice: 'Category was successfully created.' }
+        format.html do
+          redirect_to [@storage_type, @category], notice: "Category was successfully created."
+        end
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }
@@ -43,13 +48,16 @@ class CategoriesController < ApplicationController
       end
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   # PATCH/PUT /categories/1
   # PATCH/PUT /categories/1.json
   def update
     respond_to do |format|
       if @category.update(category_params)
-        format.html { redirect_to [@storage_type, @category], notice: 'Category was successfully updated.' }
+        format.html do
+          redirect_to [@storage_type, @category], notice: "Category was successfully updated."
+        end
         format.json { render :show, status: :ok, location: @category }
       else
         format.html { render :edit }
@@ -63,33 +71,34 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to @storage_type, notice: 'Category was successfully destroyed.' }
+      format.html { redirect_to @storage_type, notice: "Category was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_category
-      @category = Category.find(params[:id])
-    end
 
-    def set_storage_type
-      @storage_type = StorageType.find(params[:storage_type_id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_category
+    @category = Category.find(params[:id])
+  end
 
-    def scope_to_current_user
-      redirect_to sign_in_path unless @category.storage_type.user == current_user
-    end
+  def set_storage_type
+    @storage_type = StorageType.find(params[:storage_type_id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def category_params
-      params.require(:category).permit(
-        :storage_type_id,
-        :name,
-        :unit_type,
-        :units_per_year_per_adult,
-        :notes,
-      )
-    end
+  def scope_to_current_user
+    redirect_to sign_in_path unless @category.storage_type.user == current_user
+  end
+
+  # Only allow a list of trusted parameters through.
+  def category_params
+    params.require(:category).permit(
+      :storage_type_id,
+      :name,
+      :unit_type,
+      :units_per_year_per_adult,
+      :notes,
+    )
+  end
 end
