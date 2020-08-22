@@ -53,7 +53,7 @@
   </thead>
 
   <tbody>
-    <% @food_items.each do |food_item| %>
+    <% @food_items.sort_by { |food_item| [food_item.name, food_item.expiration_date] }.each do |food_item| %>
       <tr>
         <td><%= food_item.name %></td>
         <td><%= food_item.units %> <%= food_item.category.unit_type %></td>
