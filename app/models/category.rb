@@ -19,8 +19,4 @@ class Category < ApplicationRecord
 
     total_units / units_per_year_per_adult / user.adults_providing_for
   end
-
-  def food_items_by_name
-    food_items.order(:name)
-  end
 end

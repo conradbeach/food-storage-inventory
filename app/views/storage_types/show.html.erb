@@ -27,7 +27,7 @@
     </thead>
 
     <tbody>
-      <% @categories.each do |category| %>
+      <% @categories.sort_by(&:name).each do |category| %>
         <tr>
           <td><%= link_to category.name, storage_type_category_path(@storage_type, category) %></td>
           <td><%= category.number_of_years_provided_for.round(2) %></td>

@@ -24,7 +24,7 @@
     </thead>
 
     <tbody>
-      <% @storage_types.each do |storage_type| %>
+      <% @storage_types.sort_by(&:name).each do |storage_type| %>
         <tr>
           <td><%= link_to storage_type.name, storage_type %></td>
           <td>
