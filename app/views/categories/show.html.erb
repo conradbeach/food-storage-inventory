@@ -58,7 +58,7 @@
         <td><%= food_item.name %></td>
         <td><%= food_item.units %> <%= food_item.category.unit_type %></td>
         <td><%= food_item.expiration_date.strftime("%m-%Y") %></td>
-        <td><%= food_item.created_at.to_date %></td>
+        <td><%= food_item.created_at.strftime("%b-%d-%Y") %></td>
         <td><%= link_to 'Show', [@storage_type, @category, food_item] %></td>
         <td><%= link_to 'Edit', edit_storage_type_category_food_item_path(@storage_type, @category, food_item) %></td>
         <td><%= link_to 'Destroy', [@storage_type, @category, food_item], method: :delete, data: { confirm: 'Are you sure?' } %></td>
