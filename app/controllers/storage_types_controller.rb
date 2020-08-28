@@ -63,7 +63,7 @@ class StorageTypesController < ApplicationController
     @storage_type.destroy
     respond_to do |format|
       format.html do
-        redirect_to dashboard_path(current_user), notice: "Storage type was successfully destroyed."
+        redirect_to dashboard_path(current_user), notice: "The storage type was cast into the fire!"
       end
       format.json { head :no_content }
     end
