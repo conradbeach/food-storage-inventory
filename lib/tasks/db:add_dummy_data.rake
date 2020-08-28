@@ -4,7 +4,7 @@ namespace :db do
   desc "Add fake data to the database for easier testing and reviewing"
   task add_dummy_data: :environment do
     # Users
-    user = User.create!(email: "user@example.com", password: "password")
+    user = User.create!(email: "user@example.com", password: "password", adults_providing_for: 1)
 
     # Storage Types
     storage_type = user.storage_types.create!(
