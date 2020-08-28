@@ -99,7 +99,7 @@ class FoodItemsController < ApplicationController
     @food_item.destroy
     respond_to do |format|
       format.html do
-        redirect_to [@storage_type, @category], notice: "Food item was successfully destroyed."
+        redirect_to [@storage_type, @category], notice: "The food item was cast into the fire!"
       end
       format.json { head :no_content }
     end

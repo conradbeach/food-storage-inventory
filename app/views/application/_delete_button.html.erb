@@ -1,7 +1,7 @@
 <%= link_to(
   raw('<i class="far fa-trash-alt"></i>'),
   path,
-  class: 'button is-small',
+  class: 'button is-small has-tooltip-arrow has-tooltip-danger',
   method: :delete,
-  data: { confirm: 'Are you sure you want to remove this food item?' } 
+  data: { confirm: 'Isuldur!', tooltip: "Destroy it!" },
 ) %>

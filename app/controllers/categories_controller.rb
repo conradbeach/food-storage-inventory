@@ -71,7 +71,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to @storage_type, notice: "Category was successfully destroyed." }
+      format.html { redirect_to @storage_type, notice: "The category was cast into the fire!" }
       format.json { head :no_content }
     end
   end
