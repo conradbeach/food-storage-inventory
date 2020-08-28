@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-namespace :review_app do
-  desc "Add fake data to review apps for easier reviewing"
-  task prime: :environment do
+namespace :db do
+  desc "Add fake data to the database for easier testing and reviewing"
+  task add_dummy_data: :environment do
     # Users
     user = User.create!(email: "user@example.com", password: "password")
 

@@ -1,7 +1,7 @@
 {
   "name": "food_storage_inventory",
   "scripts": {
-    "postdeploy": "bundle exec rails review_app:prime"
+    "postdeploy": "bundle exec rails db:add_dummy_data"
   },
   "env": {
     "LANG": {
