@@ -17,7 +17,7 @@
 
 <p>
   <strong>Units:</strong>
-  <%= @food_item.units %> <%= @food_item.category.unit_type %>
+  <%= format_units(@food_item.units, @food_item.category.unit_type) %>
 </p>
 
 <p>
