@@ -22,7 +22,7 @@
 
 <p>
   <strong>Total Units:</strong>
-  <%= "#{@category.total_units} #{@category.unit_type}" %>
+  <%= format_units(@category.total_units, @category.unit_type) %>
 </p>
 
 <p>
@@ -58,7 +58,7 @@
       <% @food_items.sort_by { |food_item| [food_item.name, food_item.expiration_date] }.each do |food_item| %>
         <tr>
           <td><%= link_to food_item.name, [@storage_type, @category, food_item] %></td>
-          <td><%= food_item.units %> <%= food_item.category.unit_type %></td>
+          <td><%= format_units(food_item.units, food_item.category.unit_type) %></td>
           <td><%= food_item.expiration_date.strftime("%m-%Y") %></td>
           <td><%= food_item.created_at.strftime("%b-%d-%Y") %></td>
           <td>
