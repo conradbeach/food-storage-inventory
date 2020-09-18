@@ -27,7 +27,6 @@ class StorageTypesController < ApplicationController
 
   # POST /storage_types
   # POST /storage_types.json
-  # rubocop:disable Metrics/AbcSize
   def create
     @storage_type = StorageType.new(storage_type_params.merge(user: current_user))
 
@@ -41,7 +40,6 @@ class StorageTypesController < ApplicationController
       end
     end
   end
-  # rubocop:enable Metrics/AbcSize
 
   # PATCH/PUT /storage_types/1
   # PATCH/PUT /storage_types/1.json
