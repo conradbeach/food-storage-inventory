@@ -31,7 +31,6 @@ class CategoriesController < ApplicationController
 
   # POST /categories
   # POST /categories.json
-  # rubocop:disable Metrics/AbcSize
   def create
     @category = Category.new(category_params.merge(storage_type: @storage_type))
     @storage_types = current_user.storage_types
@@ -48,7 +47,6 @@ class CategoriesController < ApplicationController
       end
     end
   end
-  # rubocop:enable Metrics/AbcSize
 
   # PATCH/PUT /categories/1
   # PATCH/PUT /categories/1.json
