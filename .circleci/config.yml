@@ -46,12 +46,20 @@ jobs:
 
       # Run
       - run:
-          name: Run Tests
+          name: Run RSpec Tests
           command: bundle exec rspec --format progress
+
+      - run:
+          name: Run Cypress Tests
+          command: bundle exec rails cypress:run
       
       - run:
           name: Run Rubocop
           command: bundle exec rubocop --display-style-guide
+
+      - run:
+          name: Run ESlint
+          command: yarn eslint app/javascript cypress
 
       - run:
           name: Run bundler-audit
