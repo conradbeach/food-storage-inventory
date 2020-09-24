@@ -10,7 +10,7 @@
 <h1>Your Storage</h1>
 
 <h2>Upcoming Expiration Dates</h2>
-<p>Coming soon...</p>
+<%= render 'food_items/table', food_items: @expiring_food_items, sort_by: [:expiration_date, :name] %>
 
 <h2>Storage Types</h2>
 <div class="table-container">

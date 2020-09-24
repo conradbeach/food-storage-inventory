@@ -5,6 +5,7 @@ class UsersController < Clearance::UsersController
 
   def show
     @storage_types = current_user.storage_types
+    @expiring_food_items = current_user.expiring_food_items
   end
 
   def edit; end
