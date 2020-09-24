@@ -46,8 +46,12 @@ jobs:
 
       # Run
       - run:
-          name: Run Tests
+          name: Run RSpec Tests
           command: bundle exec rspec --format progress
+
+      - run:
+          name: Run Cypress Tests
+          command: bundle exec rails cypress:run
       
       - run:
           name: Run Rubocop
