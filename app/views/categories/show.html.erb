@@ -40,38 +40,7 @@
 <%= link_to 'Back', @storage_type %>
 
 <h2>Food Items</h2>
-
-<div class="table-container">
-  <table class="table is-striped is-narrow is-hoverable is-fullwidth">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Units</th>
-        <th>Exp. Date</th>
-        <th>Date Added</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @food_items.sort_by { |food_item| [food_item.name, food_item.expiration_date] }.each do |food_item| %>
-        <tr>
-          <td><%= link_to food_item.name, [@storage_type, @category, food_item] %></td>
-          <td><%= format_units(food_item.units, food_item.category.unit_type) %></td>
-          <td><%= food_item.expiration_date.strftime("%m-%Y") %></td>
-          <td><%= food_item.created_at.strftime("%b-%d-%Y") %></td>
-          <td>
-            <%= render "edit_button", path: edit_storage_type_category_food_item_path(@storage_type, @category, food_item) %>
-          </td>
-          <td>
-            <%= render "delete_button", path: [@storage_type, @category, food_item] %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+<%= render 'food_items/table', food_items: @food_items, sort_by: [:name, :expiration_date] %>
 
 <br>
 
