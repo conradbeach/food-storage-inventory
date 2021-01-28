@@ -32,7 +32,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 
 gem "clearance", "~> 2.0"
 
-gem 'turbo-rails', "~> 0.0"
+gem 'hotwire-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
