@@ -5,7 +5,6 @@
         <th>Name</th>
         <th>Units</th>
         <th>Exp. Date</th>
-        <th>Date Added</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
@@ -17,7 +16,6 @@
           <td><%= link_to food_item.name, [food_item.storage_type, food_item.category, food_item] %></td>
           <td><%= format_units(food_item.units, food_item.category.unit_type) %></td>
           <td><%= food_item.expiration_date.strftime("%m-%Y") %></td>
-          <td><%= food_item.created_at.strftime("%b-%d-%Y") %></td>
           <td>
             <%= render "edit_button", path: edit_storage_type_category_food_item_path(food_item.storage_type, food_item.category, food_item) %>
           </td>
