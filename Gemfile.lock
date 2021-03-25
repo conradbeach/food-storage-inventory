@@ -294,7 +294,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   pry-byebug
   puma (~> 4.1)
-  rails (~> 6.0, >= 6.0.2.2)
+  rails (~> 6.1.0, >= 6.0.2.2)
   rspec-rails (= 5.0)
   rubocop
   rubocop-performance
