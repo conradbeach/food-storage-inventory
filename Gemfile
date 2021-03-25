@@ -39,7 +39,7 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "cypress-rails"
   gem "pry-byebug", "~> 3.8"
-  gem "rspec-rails", "~> 3.9", ">= 3.9.1"
+  gem "rspec-rails", "5.0"
   gem "rubocop", require: false
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
