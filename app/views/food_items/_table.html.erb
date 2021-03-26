@@ -11,18 +11,29 @@
     </thead>
 
     <tbody>
-      <% food_items.sort_by { |food_item| sort_by.map { |attr| food_item.send(attr) } }.each do |food_item| %>
+      <% food_item_groups.each do |name, food_items| %>
         <tr>
-          <td><%= link_to food_item.name, [food_item.storage_type, food_item.category, food_item] %></td>
-          <td><%= format_units(food_item.units, food_item.category.unit_type) %></td>
-          <td><%= food_item.expiration_date.strftime("%m-%Y") %></td>
-          <td>
-            <%= render "edit_button", path: edit_storage_type_category_food_item_path(food_item.storage_type, food_item.category, food_item) %>
-          </td>
-          <td>
-            <%= render "delete_button", path: [food_item.storage_type, food_item.category, food_item] %>
-          </td>
+          <td><%= name %></td>
+          <td><%= format_units(food_items.sum(&:units), food_items.first.category.unit_type) %></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
+
+        <% food_items.each do |food_item| %>
+          <tr>
+            <td style="padding-left: 35px"><%= link_to food_item.name, [food_item.storage_type, food_item.category, food_item] %></td>
+            <td><%= format_units(food_item.units, food_item.category.unit_type) %></td>
+            <td><%= food_item.expiration_date.strftime("%m-%Y") %></td>
+            <td>
+              <%= render "edit_button", path: edit_storage_type_category_food_item_path(food_item.storage_type, food_item.category, food_item) %>
+            </td>
+            <td>
+              <%= render "delete_button", path: [food_item.storage_type, food_item.category, food_item] %>
+            </td>
+          </tr>
+        <% end %>
+
       <% end %>
     </tbody>
   </table>
