@@ -10,9 +10,9 @@
       </tr>
     </thead>
 
-    <tbody>
+    <tbody data-controller="table">
       <% food_item_groups.each do |name, food_items| %>
-        <tr>
+        <tr data-action="click->table#toggleGroup" data-group-name="<%= name %>">
           <td><%= name %></td>
           <td><%= format_units(food_items.sum(&:units), food_items.first.category.unit_type) %></td>
           <td></td>
@@ -21,7 +21,7 @@
         </tr>
 
         <% food_items.each do |food_item| %>
-          <tr>
+          <tr data-table-target="groupChild" data-group-name="<%= name %>" class="hidden">
             <td style="padding-left: 35px"><%= link_to food_item.name, [food_item.storage_type, food_item.category, food_item] %></td>
             <td><%= format_units(food_item.units, food_item.category.unit_type) %></td>
             <td><%= food_item.expiration_date.strftime("%m-%Y") %></td>
@@ -33,7 +33,6 @@
             </td>
           </tr>
         <% end %>
-
       <% end %>
     </tbody>
   </table>
