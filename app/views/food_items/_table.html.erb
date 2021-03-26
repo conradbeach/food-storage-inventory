@@ -21,8 +21,8 @@
         </tr>
 
         <% food_items.each do |food_item| %>
-          <tr data-table-target="groupChild" data-group-name="<%= name %>" class="hidden">
-            <td style="padding-left: 35px"><%= link_to food_item.name, [food_item.storage_type, food_item.category, food_item] %></td>
+          <tr class="group-child hidden" data-table-target="groupChild" data-group-name="<%= name %>">
+            <td><%= link_to food_item.name, [food_item.storage_type, food_item.category, food_item] %></td>
             <td><%= format_units(food_item.units, food_item.category.unit_type) %></td>
             <td><%= food_item.expiration_date.strftime("%m-%Y") %></td>
             <td>
