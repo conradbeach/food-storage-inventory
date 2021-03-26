@@ -39,5 +39,5 @@
 <%= link_to 'New Storage Type', new_storage_type_path %>
 
 <h2 style="margin-top: 3rem">Upcoming Expiration Dates</h2>
-<%= render 'food_items/table', food_items: @expiring_food_items, sort_by: [:expiration_date, :name] %>
+<%= render 'food_items/table', food_item_groups: @expiring_food_item_groups %>
 
