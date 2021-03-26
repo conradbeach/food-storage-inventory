@@ -81,6 +81,11 @@ namespace :db do
           expiration_date: 25.years.from_now,
           units: 40,
         },
+        {
+          name: "Black Beans",
+          expiration_date: 18.months.ago,
+          units: 40,
+        },
       ],
     )
 
@@ -109,6 +114,11 @@ namespace :db do
         {
           name: "Adult Multi-vitamin",
           expiration_date: 8.months.from_now,
+          units: 120,
+        },
+        {
+          name: "Children's Multi-vitamin",
+          expiration_date: 1.month.ago,
           units: 120,
         },
       ],

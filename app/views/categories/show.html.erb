@@ -29,7 +29,6 @@
   <strong>Years Provided For:</strong>
   <%= @category.number_of_years_provided_for.round(2) %>
 </p>
-        
 
 <p>
   <strong>Notes:</strong>
@@ -40,7 +39,8 @@
 <%= link_to 'Back', @storage_type %>
 
 <h2>Food Items</h2>
-<%= render 'food_items/table', food_items: @food_items, sort_by: [:name, :expiration_date] %>
+
+<%= render 'food_items/table', food_item_groups: @food_item_groups %>
 
 <br>
 

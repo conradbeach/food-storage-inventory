@@ -15,7 +15,9 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-    @food_items = @category.food_items
+    @food_item_groups = @category.food_items.sort_by(&:name).group_by(&:name).each do |_name, items|
+      items.sort_by!(&:expiration_date)
+    end
   end
 
   # GET /categories/new

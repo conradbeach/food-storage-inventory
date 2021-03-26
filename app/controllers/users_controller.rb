@@ -5,7 +5,10 @@ class UsersController < Clearance::UsersController
 
   def show
     @storage_types = current_user.storage_types
-    @expiring_food_items = current_user.expiring_food_items
+    @expiring_food_item_groups = current_user
+      .expiring_food_items
+      .sort_by(&:expiration_date)
+      .group_by(&:name)
   end
 
   def edit; end
